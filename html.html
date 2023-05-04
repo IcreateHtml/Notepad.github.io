@@ -1,0 +1,15 @@
+<!DOCTYPE html><html><head><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest"><title>Notepad with Save/Upload Feature</title></head><body><style>
+textarea{
+	color:black ;
+}
+</style>
+<style>
+body {
+background-image: radial-gradient(circle at 95.45% -4.17%, #ffe100 0, #ffd000 10%, #ffbd00 20%, #ffa900 30%, #ff9214 40%, #f37b1f 50%, #e36526 60%, #d3512b 70%, #c64030 80%, #ba3135 90%, #af243a 100%);
+}
+
+
+</style><style>textarea {color:black ; }</style><h1>Notepad with Save/Upload Feature</h1><form><label for="text">Type your text here:</label><br><textarea id="text" name="text" rows="10" cols="60"></textarea><br><br><button type="button" onclick="saveText()">Save Text</button><input type="file" id="fileInput" style="display:none"><button type="button" onclick="uploadFile()">Upload File</button></form><script>function saveText(){var e=document.getElementById("text").value,t=new Blob([e],{type:"text/plain"}),n=document.createElement("a");n.download="SavedFileInNotepad.txt",n.innerHTML="Download File",null!=window.webkitURL?n.href=window.webkitURL.createObjectURL(t):(n.href=window.URL.createObjectURL(t),n.onclick=destroyClickedElement,n.style.display="none",document.body.appendChild(n)),n.click()}function uploadFile(){document.getElementById("fileInput").click(),document.getElementById("fileInput").addEventListener("change",function(){var e=new FileReader;e.onload=function(){document.getElementById("text").value=e.result},e.readAsText(document.getElementById("fileInput").files[0])})}</script></body></html>
