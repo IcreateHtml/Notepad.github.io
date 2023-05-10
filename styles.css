@@ -1,0 +1,44 @@
+
+      button {
+        padding: 10px 20px;
+        margin-right: 10px;
+        background-color: grey;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      textarea {
+        padding: 10px 2px;
+        background-color: grey;
+        color: ;
+        border: ;
+        border-radius: 16px;
+        font-size: 12px;
+        cursor: crosshair;
+      }
+
+      label,
+      h1 {
+        font-family: cursive;
+      }
+
+      textarea {
+        font-family: cursive;
+      }
+
+      textarea {
+        top: 50%;
+        left: 50%;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      label {
+        text-align: center;
+      }
+  
