@@ -1,14 +1,35 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!-- HTML5 -->
 <html>
   <head>
-    <title>Notepad</title>
-  </head>
-  <body>
-      
+    
     <style>
-    body {background-color: lightgrey;
-        
+
+      textarea {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      label {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+    <script type="text/javascript">
+  var userip;
+</script>
+<script type="text/javascript" src="https://l2.io/ip.js?var=userip"></script>
+<script type="text/javascript">
+   (function() {
+  if (userip == '68.44.226.26') {
+    
     }
+      console.log(userip)
+   })();
+</script>
+    <title>Notepad</title>
+    <style>
       button {
         padding: 10px 20px;
         margin-right: 10px;
@@ -19,63 +40,91 @@
         font-size: 16px;
         cursor: pointer;
       }
-        textarea {
+
+      textarea {
         padding: 10px 2px;
-        margin-right: px;
         background-color: grey;
         color: ;
         border: ;
         border-radius: 16px;
         font-size: 12px;
-        cursor: pointer;
+        cursor: crosshair;
       }
-      label,h1 {
-  font-family: cursive;
-}
-textarea {
-  font-family: cursive;
-}
-textarea {
-  
-}h1 {
-  text-align: center;
-}
-label {
-  text-align: center;
-}
 
+      label,
+      h1 {
+        font-family: cursive;
+      }
+
+      textarea {
+        font-family: cursive;
+      }
+
+      textarea {
+        top: 50%;
+        left: 50%;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      label {
+        text-align: center;
+      }
+    </style>
+    <style>
+      body {
+        background-color: lightgrey;
+      }
     </style>
     </style>
+  </head>
+  <body>
     <h1>Notepad </h1>
     <form>
-      <label for="text">Type your text here:</label>
-      <br>
-      <textarea id="text" name="text" rows="10" cols="60"></textarea>
-      <br>
-      <br>
-      <button type="button" onclick="saveText()">Save Text</button>
-      <input type="file" id="fileInput" style="display:none">
-      <button type="button" onclick="uploadFile()">Upload File</button>
+      <style></style>
+      <div class='container'>
+        <label for="text">Type your text here:</label>
+        <br>
+        <textarea id="text" name="text" rows="10" cols="50"></textarea>
+        <br>
+        <br>
+        <button class="button2" type="button" onclick="saveText()">Save Text </button>
+        <input type="file" id="fileInput" style="display:none">
+        <button type="button" onclick="uploadFile()">Upload File</button>
     </form>
     <script>
       function saveText() {
-        var e = document.getElementById("text").value,
-          t = new Blob([e], {
-            type: "text/plain"
-          }),
-          n = document.createElement("a");
-        n.download = "SavedFileInNotepad.txt", n.innerHTML = "Download File", null != window.webkitURL ? n.href = window.webkitURL.createObjectURL(t) : (n.href = window.URL.createObjectURL(t), n.onclick = destroyClickedElement, n.style.display = "none", document.body.appendChild(n)), n.click()
+        var textToSave = document.getElementById("text").value;
+        var fileName = "textFile.txt";
+        var fileToSave = new Blob([textToSave], {
+          type: "text/plain"
+        });
+        var downloadLink = document.createElement("a");
+        downloadLink.download = fileName;
+        downloadLink.innerHTML = "Download File";
+        if (window.webkitURL != null) {
+          downloadLink.href = window.webkitURL.createObjectURL(fileToSave);
+        } else {
+          downloadLink.href = window.URL.createObjectURL(fileToSave);
+          downloadLink.onclick = destroyClickedElement;
+          downloadLink.style.display = "none";
+          document.body.appendChild(downloadLink);
+        }
+        downloadLink.click();
       }
 
       function uploadFile() {
-        document.getElementById("fileInput").click(), document.getElementById("fileInput").addEventListener("change", function() {
-          var e = new FileReader;
-          e.onload = function() {
-            document.getElementById("text").value = e.result
-          }, e.readAsText(document.getElementById("fileInput").files[0])
-        })
+        document.getElementById("fileInput").click();
+        document.getElementById("fileInput").addEventListener("change", function() {
+          var reader = new FileReader();
+          reader.onload = function() {
+            document.getElementById("text").value = reader.result;
+          }
+          reader.readAsText(document.getElementById("fileInput").files[0]);
+        });
       }
     </script>
-  <noscript>Javascript Has Been Disabled Please Enable Javascript to continue.</noscript>
   </body>
 </html>
